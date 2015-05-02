@@ -20,7 +20,8 @@ best_score = -inf; % Higher score = better
 for p = 1:POS_RANGE
     for r = 1:ROT_RANGE
         try_state = state; % Make copy of the state
-        try_state = move_piece(try_state, p, r);
+        [try_state valid] = move_piece(try_state, p, r);
+        if ~valid, continue; end
         [pp rr s] = agent(try_state, p, r, depth+1);
         if s > best_score
             best_score = s;

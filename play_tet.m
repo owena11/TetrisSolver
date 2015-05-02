@@ -17,7 +17,7 @@ else
 end
 
 % Move a piece right when it spawns
-mover(4);
+%possible = mover_custom(4);
 
 make_preview;  % Set up the next piece.
 start_tet;     % Start the timer.
