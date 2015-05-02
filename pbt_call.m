@@ -5,6 +5,7 @@
     % Callback for the 'Start' ('Pause', 'Continue') button.
         switch get(S.pbt,'string')
             case 'Start'
+                fcn_music_start();
                 set(S.pch(:),'facecol','w','edgecol','w'); % Clear board.
                 set(S.pbt,'string','Pause'); % Changle pushbutton label.
                 digits(S.DSPDIG(3),sprintf('%i',S.PLRLVL)) % Show Level.
@@ -17,6 +18,7 @@
                 S.CURSCR = 0; % New Game -> start at zero.
                 play_tet; % Initiate Gameplay.
             case 'Pause'
+                fcn_music_stop();
                 stop_tet;  % Stop the timer, set the callbacks
                 set([S.fig,S.pbt],'keypressfcn',@fig_kpfcn2)
                 set(S.pbt,'string','Continue')
