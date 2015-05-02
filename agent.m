@@ -5,6 +5,7 @@ if nargin < 2
 end
 POS_RANGE = 9;
 ROT_RANGE = 4;
+MAX_DEPTH = 3;
 
 if depth > MAX_DEPTH
     best_pos = pos;
@@ -20,7 +21,7 @@ for p = 1:POS_RANGE
     for r = 1:ROT_RANGE
         try_state = state; % Make copy of the state
         try_state = move_piece(try_state, p, r);
-        [pp rr s] = agent(try_state, p, r);
+        [pp rr s] = agent(try_state, p, r, depth+1);
         if s > best_score
             best_score = s;
             best_pos = pp;
