@@ -8,10 +8,6 @@ Init = r1;
 
 NumMove =  Dest - Init; 
 
-<<<<<<< HEAD
-for ii = 1:abs(NumMove)
-=======
-
 % Check if left/right movement is possible
 switch N
     
@@ -51,7 +47,6 @@ if ( all(new_S.BRDMAT(new_S.CUR+N)  == 0 ))
        
     new_S.BRDMAT(new_S.CUR+N) = true; % All checks should be done already.
     new_S.CUR = new_S.CUR + N;    
->>>>>>> 7db53da8ab85f375437bb23378e81c2039137f74
     
     if (NumMove<0)
         
