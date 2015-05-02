@@ -6,7 +6,9 @@ x1 = state.CUR(1);
 
 Init = r1;
 
-NumMove =  Dest - Init; 
+Dest = 1;
+
+NumMove =  Dest - Init 
 
 for ii = 1:abs(NumMove)
     
@@ -14,14 +16,12 @@ for ii = 1:abs(NumMove)
         
         [new_S valid] = trymove(state, -1);
         
+        ret
+        
     else
         
         [new_S valid] = trymove(state, 1);
-               
+        
     end
     
-    if (~valid), return; end
-    
 end
-
-valid = 1;

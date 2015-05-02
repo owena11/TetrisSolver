@@ -14,7 +14,7 @@
         row = rem(S.CUR-1,10) + 1;  % These index into board matrix.
 
         switch varargin{2}.Key
-            case 'rightarrow'
+           case 'rightarrow'
                 % Without this IF, the piece will wrap around!
                 if max(row)<=9
                     uc = unique(col);  % Check if object to the right.
