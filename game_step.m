@@ -1,5 +1,3 @@
-
-
     function [] = game_step(varargin)
     global S;
     % Timerfcn, advances the current piece down the board

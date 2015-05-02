@@ -157,10 +157,10 @@ S.PLRLVL = 1; % The level the player chooses to start...
 S.LVLFAC = .825;  % Percent of previous timerdelay. 
 S.CHGLVL = 5; % Increment level every S.CHGLVL lines.
 
-if nargin && isnumeric(varargin{1})
-    S.PLRLVL = min(round(max(varargin{1},1)),9);  % Starting level.
-    digits(S.DSPDIG(3),sprintf('%i',S.PLRLVL))
-end
+% if nargin && isnumeric(varargin{1})
+%     S.PLRLVL = min(round(max(varargin{1},1)),9);  % Starting level.
+%     digits(S.DSPDIG(3),sprintf('%i',S.PLRLVL))
+% end
 
 try
     SCR = load('TETRIS_HIGH_SCORE.mat');
@@ -174,4 +174,5 @@ set([S.DSPDIG(:).ax,S.axs(:).',S.pbt,S.DSPDIG(:).tx],...
     'units','norm','fontunits','norm')  % So we can resize the figure.
 set(S.pbt,'enable','on') % Turn the game on now that we are ready...
 
+pbt_call();
 

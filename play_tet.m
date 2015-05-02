@@ -1,4 +1,3 @@
-
 function [] = play_tet()
 global S;
 % Picks a next piece and puts the preview in correct axes.
@@ -16,6 +15,9 @@ if any(S.BRDMAT(S.CUR))
 else
     S.BRDMAT(S.CUR) = true; % Now update the matrix...
 end
+
+% Move a piece right when it spawns
+mover(4);
 
 make_preview;  % Set up the next piece.
 start_tet;     % Start the timer.
