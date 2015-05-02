@@ -3,6 +3,20 @@ global r_col;
 global X;
 global Y;
 global g1;
+
+global music_handle;
+
+if exist('music/theme.wav','file');
+    % Load External Files
+    [Yy, Fs]= wavread('music/theme.wav');
+
+    back_music = audioplayer(Yy,Fs); % player for sounds.
+    music_handle.back_music = back_music;
+else
+    music_handle.back_music = [];
+end
+
+
 try
     rng('shuffle');  % So each game is not the same! RNG is new in r2011a.
 catch  %#ok
