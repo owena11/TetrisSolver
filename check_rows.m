@@ -49,9 +49,9 @@
 
             set(S.pbt,'enable','on')  % Now user is o.k. to go.
         else
-            if ~isplaying(S.plr)
-                play(S.plr,[7500 8500])  % Play our plunk sound.
-            end
+           % if ~isplaying(S.plr)
+           %     play(S.plr,[7500 8500])  % Play our plunk sound.
+           % end
         end
     end
 
