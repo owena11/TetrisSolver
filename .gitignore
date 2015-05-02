@@ -1,0 +1,69 @@
+#### Tex Ignore ####
+*.aux
+*.log
+*.dvi
+*.bbl
+*.blg
+*.toc
+*.lof
+*.pdf
+*.acn
+*.acr
+*.alg
+*.idx
+*.ist
+*.xdy
+*.txt
+*.out
+*.bib
+*.run.xml
+*.bcf
+*.fdb_latexmk
+#### Compressed Files and Archives ####
+*.zip
+*.tar
+*.csv
+*.bin
+*.tar.gz
+
+#### System #######
+.DS_Store
+*.gin
+*.swp
+*.swo
+._.DS_Store
+*.db
+
+### Matlab #####
+*.m~
+*.mat
+*.fig
+*.prg
+
+### Java ###
+*.class
+### Directories ###
+Archive/
+auto-lib/
+RugbyData/
+Matt_Scrum/ build/ .ipynb_checkpoints/ ### Images ####
+*.jpg
+*.png
+
+### Movies ####
+*.mov
+*.avi
+
+### Python ### 
+*.pyc
+*.npy
+*.pkl*
+.ipynb_checkpoints/
+
+### Misc Files ###
+*.key
+*.swp
+
+### Open Office ###
+*.docx#
+
