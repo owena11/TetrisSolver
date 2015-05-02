@@ -1,8 +1,8 @@
 function [ STRUCT ] = fcn_tetris_run( varargin )
-global S;
-global r_col;
-global X;
-global Y;
+global S;           % Figure
+global r_col;       % Rectangle Colour
+global X;           % Draw Play Area 
+global Y;           
 global g1;
 try
     rng('shuffle');  % So each game is not the same! RNG is new in r2011a.
