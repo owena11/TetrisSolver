@@ -22,8 +22,8 @@ switch N
             uc = unique(col);  % Check if object to the right.
 
             for kk = 1:length(uc)
-                if (S.BRDMAT(max(row(col==uc(kk)))+1,uc(kk)))
-                    S.STPTMR = 0;
+                if (new_S.BRDMAT(max(row(col==uc(kk)))+1,uc(kk)))
+                    new_S.STPTMR = 0;
                     return
                 end
             end
@@ -35,8 +35,8 @@ switch N
             uc = unique(col);  % Check if object to the left
 
             for kk = 1:length(uc)
-                if (S.BRDMAT(min(row(col==uc(kk)))-1,uc(kk)))
-                    S.STPTMR = 0;
+                if (new_S.BRDMAT(min(row(col==uc(kk)))-1,uc(kk)))
+                    new_S.STPTMR = 0;
                     return
                 end
             end
