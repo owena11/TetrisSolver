@@ -1,4 +1,4 @@
-function [new_S valid] = move_piece(state, Dest)
+function [new_S valid] = move_piece(state, pos, rot)
 
 x1 = state.CUR(1);
 
@@ -6,22 +6,27 @@ x1 = state.CUR(1);
 
 Init = r1;
 
-NumMove =  Dest - Init;
+NumMove =  pos - Init;
 
 for ii = 1:abs(NumMove)
-
+    
     if (NumMove<0)
-
+        
         [new_S valid] = trymove(state, -1);
-
+        
     else
-
+        
         [new_S valid] = trymove(state, 1);
-
+        
     end
-
+    
     if (~valid), return; end
+    
+end
 
+for i = 1:rot
+    [new_S valid] = tryrotate(state);
+    if (~valid), return; end
 end
 
 valid = 1;
