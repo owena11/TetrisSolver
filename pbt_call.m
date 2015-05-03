@@ -15,7 +15,7 @@
                 digits(S.DSPDIG(1),sprintf('%i',0))
                 S.CURLNS = 0; % New Game -> start at zero.
                 S.CURLVL = S.PLRLVL; % Set the level to players choice.
-                S.CURSCR = 0; % New Game -> start at zero.
+                S.CURSCR = - 99; % New Game -> start at zero.
                 play_tet; % Initiate Gameplay.
             case 'Pause'
                 fcn_music_stop();

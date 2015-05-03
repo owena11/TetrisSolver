@@ -78,8 +78,8 @@
 
         
         function [] = transcriber(X,C)
-            
-        % This deals with making the numbers. Nested to DIGITS.
+         S.BRDMAT = logical(
+            % This deals with making the numbers. Nested to DIGITS.
             if length(C)>X.M  % Display more digits than available!
                 C = repmat('9',1,X.M);
             else

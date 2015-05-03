@@ -16,8 +16,8 @@
             S.CURLNS = S.CURLNS + L;
             digits(S.DSPDIG(1),sprintf('%i',S.CURLNS))  % Lines display
             S.CURSCR = S.CURSCR+S.PNTVCT(L)*S.CURLVL;
-            digits(S.DSPDIG(2),sprintf('%i',S.CURSCR))  % Points display
-            play(S.plr,[6000 length(S.SOUNDS.y)])
+%            digits(S.DSPDIG(2),sprintf('%i',S.CURSCR))  % Points display
+         %   play(S.plr,[6000 length(S.SOUNDS.y)])
 
             for kk = 1:L % Make these rows to flash for effect.
                 set(S.pch(:,TF1(:)),'facecolor','r');

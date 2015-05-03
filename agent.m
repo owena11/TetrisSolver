@@ -21,7 +21,7 @@ elseif depth > 2
     state = add_piece(state,randi(7,1,1));
 end
 
-MAX_ROT = [2, 4, 4, 4, 2, 2, 1] - 1;
+MAX_ROT = [2, 4, 4, 4, 2, 2, 2] ;
 
 
 best_pos = pos;
@@ -35,11 +35,17 @@ for r = 0:MAX_ROT(state.PNM)
 
         if ~valid, continue; end
         [~, new_state] = costfn(try_state, pos, rot);
-
+            % cost = costfn_holes(new_state);
+           %  new_state.CURSCR = new_state.CURSCR  + 3*cost;
+           new_state.CURSCR = new_state.CURSCR *2
+            h = 20 - find(sum(new_state.BRDMAT),1,'last');
+             %flatness = max(abs(diff(sum(new_state.BRDMAT))));
+             %new_state.CURSCR = new_state.CURSCR + 20*1 / flatness;
+             new_state.CURSCR = new_state.CURSCR + 100* h;
         %%% Add shape to cstfn state 
-        figure(1); sc(new_state.BRDMAT); drawnow
-        pause(0.000000001)
-        [pp, rr, s, kk] = agent(new_state, p, r,k, depth+1 );
+       % figure(2); sc(new_state.BRDMAT); drawnow
+        %% pause(0.0000000000000001)
+         [pp, rr, s, kk] = agent(new_state, p, r,k, depth+1 );
                 
         if best_score <= s
             best_score = s;
