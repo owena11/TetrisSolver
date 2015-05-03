@@ -3,7 +3,7 @@ function [new_S valid] = trymove(state, N)
 
 new_S = state;% new_S = S;
 arg = 0;
-valid = 55;
+valid = 0;
 
 % Remove block from its current position
 new_S.BRDMAT(new_S.CUR) = false; % new_S.CUR, new_S.COL defined in play_tet.
@@ -24,19 +24,21 @@ switch N
             for kk = 1:length(uc)
                 if (new_S.BRDMAT(max(row(col==uc(kk)))+1,uc(kk)))
                     new_S.STPTMR = 0;
+                    new_S.BRDMAT(new_S.CUR) = true;
                     return
                 end
             end
 
         end
         
-    case 2
+    case -1
         if min(row)>=2
             uc = unique(col);  % Check if object to the left
 
             for kk = 1:length(uc)
                 if (new_S.BRDMAT(min(row(col==uc(kk)))-1,uc(kk)))
                     new_S.STPTMR = 0;
+                    new_S.BRDMAT(new_S.CUR) = true;
                     return
                 end
             end
@@ -61,7 +63,9 @@ if ( all(new_S.BRDMAT(new_S.CUR+N)  == 0 ))
 else
     
     valid = 0;
+    new_S.BRDMAT(new_S.CUR) = true;
     return;
     
 end
+valid = 1;
 

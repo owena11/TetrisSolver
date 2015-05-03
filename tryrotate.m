@@ -6,9 +6,10 @@ function [new_S valid] = tryrotate(state)
 % For the switch:  1-I, 2-T, 3-L, 4-J, 5-Z, 6-S, 7-O
 
 % Compute current row/col values
+new_S = state;
 col = ceil(new_S.CUR/10); % S.CUR defined in play_tet.
 row = rem(new_S.CUR-1,10) + 1;  % These index into board matrix.
-
+valid = 1;
 
 switch new_S.PNM % Defined in play_tet.  Turn depends on shape.
     
@@ -223,9 +224,5 @@ end
 
 new_S.BRDMAT(ind) = true;
 new_S.CUR = ind; % new_S.CUR, new_S.COL defined in play_tet.
-set([new_S.pch(tmp),new_S.pch(ind)],...
-    {'facecolor'},{'w';'w';'w';'w';'flat';'flat';'flat';'flat'},...
-    {'edgecolor'},{'w';'w';'w';'w';'none';'none';'none';'none'},...
-    {'cdata'},{[];[];[];[];new_S.COL;new_S.COL;new_S.COL;new_S.COL});
 end
 

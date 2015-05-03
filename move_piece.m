@@ -1,32 +1,29 @@
-function [new_S valid] = move_piece(state, pos, rot)
+function [state valid] = move_piece(state, pos, rot)
 
 x1 = state.CUR(1);
 
-[r1 c1] = ind2sub( [10 20], x1 );
+[act_pos c1] = ind2sub( [10 20], x1 );
 
-Init = r1;
-
-NumMove =  pos - Init;
-
-for ii = 1:abs(NumMove)
-    
-    if (NumMove<0)
-        
-        [new_S valid] = trymove(state, -1);
-        
+moves = pos - act_pos;
+bak_state = state;
+for i = 1:abs(pos - act_pos)
+    if (moves < 0)
+        [state valid] = trymove(state, -1);
     else
-        
-        [new_S valid] = trymove(state, 1);
-        
+        [state valid] = trymove(state, 1);
     end
-    
-    if (~valid), return; end
-    
+    if (~valid)
+        state = bak_state;
+        return
+    end
 end
 
 for i = 1:rot
-    [new_S valid] = tryrotate(state);
-    if (~valid), return; end
+    [state valid] = tryrotate(state);
+    if (~valid)
+        state = bak_state;
+        return;
+    end
 end
 
 valid = 1;
