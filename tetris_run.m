@@ -7,7 +7,7 @@ global g1;
 global music_handle;
 
 if exist('music/theme.wav','file');
-    % Load External Files
+    %Load External Files
     [Yy, Fs]= wavread('music/theme.wav');
 
     back_music = audioplayer(Yy,Fs); % player for sounds.

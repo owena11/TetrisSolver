@@ -20,15 +20,16 @@ function [score , state] = costfn(state, pos, rot)
             currentBoard(newState(newState > 0)) = 0;
             break
         end
-        pause(0.1)
-        imshow(currentBoard)
+         pause(0.00000000000001)
+        imagesc(currentBoard)
+       
         oldState = newState;
- 
+   
     end
 
     %%%% Compute cost function for resting place
     TF = all(currentBoard);
-
+    state.BRDMAT = currentBoard;
     if any(TF)
         sm = sum(TF);
         B = false(size(currentBoard));  % Temp store to switcheroo.
@@ -42,5 +43,6 @@ function [score , state] = costfn(state, pos, rot)
     end
 
     score = 0; % Dummy agent: always prefer moving to the right
-
+   % pause(0.4);
+       
 end
