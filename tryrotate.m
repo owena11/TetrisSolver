@@ -6,10 +6,13 @@ function [new_S valid] = tryrotate(state)
 % For the switch:  1-I, 2-T, 3-L, 4-J, 5-Z, 6-S, 7-O
 
 % Compute current row/col values
+state_bak = state;
 new_S = state;
 col = ceil(new_S.CUR/10); % S.CUR defined in play_tet.
 row = rem(new_S.CUR-1,10) + 1;  % These index into board matrix.
 valid = 1;
+arg = 1;
+
 
 switch new_S.PNM % Defined in play_tet.  Turn depends on shape.
     
@@ -17,7 +20,8 @@ switch new_S.PNM % Defined in play_tet.  Turn depends on shape.
         
         if any(col>19) || all(col<=2)
             
-            valid = 0; 
+            valid = 0;
+            new_S = state_bak;
             return;
             
         else
@@ -51,7 +55,9 @@ switch new_S.PNM % Defined in play_tet.  Turn depends on shape.
         
     case 2
         if sum(col==1)==3
-            valid = 0; return;
+            valid = 0;
+            new_S = state_bak;
+            return;
         end
 
         if arg
@@ -92,7 +98,9 @@ switch new_S.PNM % Defined in play_tet.  Turn depends on shape.
     case 3
         
         if sum(col==1)==3
-            valid = 0; return;
+            valid = 0;
+            new_S = state_bak;
+            return;
         end
 
         if arg
@@ -132,7 +140,8 @@ switch new_S.PNM % Defined in play_tet.  Turn depends on shape.
     
     case 4
         if sum(col==1)==3
-            valid = 0; return;
+            valid = 0;new_S = state_bak;
+            return;
         end
 
         if arg
@@ -169,7 +178,8 @@ switch new_S.PNM % Defined in play_tet.  Turn depends on shape.
     case 5
         
         if any(col(2)>19) || sum(col==1)==2
-            valid = 0; return;
+            valid = 0; new_S = state_bak;
+            return;
         
         elseif new_S.CURROT==1;
             r = [row(2),row(2),row(2)-1,row(2)-1];
@@ -191,7 +201,8 @@ switch new_S.PNM % Defined in play_tet.  Turn depends on shape.
         
         if any(col(2)>19)|| sum(col==1)==2
             
-            valid = 0; return;
+            valid = 0;new_S = state_bak;
+            return;
             
         elseif new_S.CURROT==1;
             r = [row(2)+1,row(2),row(2)+1,row(2)];
@@ -210,7 +221,8 @@ switch new_S.PNM % Defined in play_tet.  Turn depends on shape.
         end
         
     otherwise
-        valid = 0; return; % The O piece.
+        valid = 0; new_S = state_bak;
+        return; % The O piece.
 end
 
 ind = r + (c-1)*10; % Holds new piece locationnew_S.
@@ -219,7 +231,8 @@ new_S.BRDMAT(new_S.CUR) = false;
 
 if any(new_S.BRDMAT(ind)) % Check if any pieces are in the way.
     new_S.BRDMAT(new_S.CUR) = true;
-    valid = 0; return;
+    valid = 0;new_S = state_bak;
+    return;
 end
 
 new_S.BRDMAT(ind) = true;

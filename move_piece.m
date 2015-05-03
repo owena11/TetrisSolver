@@ -18,7 +18,8 @@ for i = 1:abs(pos - act_pos)
     end
 end
 
-for i = 1:rot
+MAX_ROT = [2, 4, 4, 4, 2, 2, 1] - 1;
+for i = 1:min(rot, MAX_ROT(state.PNM))
     [state valid] = tryrotate(state);
     if (~valid)
         state = bak_state;
