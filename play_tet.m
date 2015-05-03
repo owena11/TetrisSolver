@@ -21,4 +21,13 @@ end
 
 make_preview;  % Set up the next piece.
 start_tet;     % Start the timer.
+
+[best_pos best_rot best_score k] = agent(S, [], [],[], 1);
+
+for i = 1: length(k)
+   fig_kp_customfcn(k(i));
+           pause(0.5);
+end
+disp(k);
+
 end

@@ -26,16 +26,17 @@ for i = 1:abs(pos - act_pos)
     if (moves < 0)
         [state valid] = trymove(state, -1);
         % Add a negative move
-        keystrokes = [keystrokes;-1];
     else
         [state valid] = trymove(state, 1);
         % Add a positive move
-        keystrokes = [keystrokes;1];
+        
     end
     if (~valid)
         state = bak_state;
         return
     end
+    keystrokes = [keystrokes;sign(moves)*1];
+    
 end
 
 valid = 1;
